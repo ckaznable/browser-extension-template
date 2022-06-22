@@ -4,7 +4,7 @@
   },
   "action": {
     "default_icon": "icons/icon-128.png",
-    "default_popup": "popmenu.html"
+    "default_popup": "options.html"
   },
   "content_security_policy": {
     "script-src": "self",
