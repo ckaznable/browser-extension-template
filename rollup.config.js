@@ -14,8 +14,6 @@ const fileList = [
 const dir = "./src"
 const outputDir = `./dist`
 
-const tsExtension = ['.ts']
-
 const plugins = [
   cleanup({
     sourcemap: process.env.NODE_ENV === "development"

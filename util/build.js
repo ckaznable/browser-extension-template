@@ -36,8 +36,6 @@ for (const path of assetsPath) {
 // copy .html file
 execSync(`cp ${isProduction?"-f":"-n"} -R src/*.html dist/`, {stdio: 'inherit'})
 
-execSync(`rm -rf ./dist/pages/popmenu/script`, {stdio: 'inherit'})
-
 // build dist
 execSync(`npx cross-env NODE_ENV=${env} MANIFEST_VERSION=${manifestVersion} BROWSER=${browser} rollup -c`, {stdio: 'inherit'})
 
