@@ -1,14 +1,10 @@
 import { execSync } from "child_process"
 import fs from "fs"
-import { createRequire } from "module"
-
-const require = createRequire(import.meta.url)
-
-const manifestBase = require("../src/manifest.base.json")
-const manifestV2 = require("../src/manifest.v2.json")
-const manifestV3 = require("../src/manifest.v3.json")
-const manifestSafari = require("../src/manifest.safari.json")
-const pkg = require("../package.json")
+import manifestBase from "../src/manifest.base.json" assert { type: "json" }
+import manifestV2 from "../src/manifest.v2.json" assert { type: "json" }
+import manifestV3 from "../src/manifest.v3.json" assert { type: "json" }
+import manifestSafari from "../src/manifest.safari.json" assert { type: "json" }
+import pkg from "../package.json" assert { type: "json" }
 
 const env = process.env.NODE_ENV || "production"
 const manifestVersion = process.env.MANIFEST_VERSION || 3

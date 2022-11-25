@@ -1,5 +1,5 @@
 import cleanup from "rollup-plugin-cleanup"
-import { terser } from "rollup-plugin-terser"
+import terser from '@rollup/plugin-terser'
 import { nodeResolve } from "@rollup/plugin-node-resolve"
 import replace from '@rollup/plugin-replace'
 import alias from '@rollup/plugin-alias'
@@ -31,25 +31,14 @@ const plugins = [
   }),
   alias({
     entries: {
-      "@": path.join(__dirname, dir, `script`)
+      "@": path.join(".", dir, `script`)
     }
   }),
   filesize()
 ]
 
 if(process.env.NODE_ENV === "production") {
-  plugins.push(terser({
-    output: {
-      comments: function (node, comment) {
-        var text = comment.value
-        var type = comment.type
-        if (type == "comment2") {
-          // multiline comment
-          return /@preserve|@license|@cc_on/i.test(text)
-        }
-      },
-    },
-  }))
+  plugins.push(terser())
 }
 
 const exportList = fileList.map(name => {
