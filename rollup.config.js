@@ -6,11 +6,12 @@ import alias from '@rollup/plugin-alias'
 import filesize from 'rollup-plugin-filesize'
 import commonjs from '@rollup/plugin-commonjs'
 import path from "path"
+import ts from "rollup-plugin-ts"
 
 const fileList = [
-  "script/content.js",
-  "script/background.js",
-  "script/options.js",
+  "script/content.ts",
+  "script/background.ts",
+  "script/options.ts",
 ]
 const dir = "./src"
 const outputDir = `./dist`
@@ -37,6 +38,9 @@ const plugins = [
   }),
   filesize(),
   commonjs(),
+  ts({
+    transpiler: "babel",
+  }),
 ]
 
 if(process.env.NODE_ENV === "production") {
